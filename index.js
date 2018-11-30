@@ -59,17 +59,12 @@ function setData(paths,data){
 
 async function goBack(page){
   depth--;
-  let btns=await page.$$('.breadcrumb-wrapper li');
-  console.log(btns.length)
-  debugger;
-  await btns[btns.length-2].click();
-
+  let btns=await page.$$('.breadcrumb-wrapper li>a');
+  await btns[btns.length-1].click();
 }
 
 async function find(page,tree){
   let list= await getList(page);
-  depth++;
-  console.log(depth)
   let nextList=[];
   let userList=[];
   for(let [key,item] of Object.entries(list)){
@@ -102,10 +97,10 @@ async function find(page,tree){
   if(nextList.length==0){
     console.log('到底了')
     // 获取用户
-    /*for(let [key,item] of Object.entries(userList)){
+    for(let [key,item] of Object.entries(userList)){
       let user=await getUser(page,item);
       console.log(user);
-    }*/
+    }
     await goBack(page)
     await page.screenshot({
       path: "back.jpg",
@@ -114,6 +109,7 @@ async function find(page,tree){
     return find(page,tree)
   }else{
     console.log('下一级')
+    depth++;
     if(depthData[depth]===undefined){
       depthData[depth]=0
     }else{
