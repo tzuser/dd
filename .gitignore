@@ -3,6 +3,8 @@
 /h5build
 /pinganbuild
 /statics
+/data
+/view
 note.md
 .DS_Store
 .idea

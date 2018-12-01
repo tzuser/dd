@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crypto": "^1.0.1",
     "jimp": "^0.6.0",
+    "md5": "^2.2.1",
+    "progress": "^2.0.1",
     "puppeteer": "^1.9.0",
     "qrcode-reader": "^1.0.4",
     "qrcode-terminal": "^0.12.0"
